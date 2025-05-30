@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0f2027);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        color: #ffffff;
+        overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
+    .team-section {
+        text-align: center;
+        padding: 80px 20px;
+        background: rgba(0, 0, 0, 0.6);
+    }
+    .team-section h2 {
+        font-size: 40px;
+        margin-bottom: 30px;
+        color: #00ffff;
+        text-shadow: 0 0 10px #00ffff;
+    }
+    .team-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+    .team-card {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        width: 250px;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+    .team-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+    }
+    .team-card img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid #00ffff;
+        object-fit: cover;
+        margin-bottom: 15px;
+    }
+    .team-card h3 {
+        margin: 10px 0 5px;
+        font-size: 20px;
+        color: #00ffff;
+    }
+    .team-card p {
+        margin: 0;
+        color: #ccc;
+        font-size: 14px;
+    }
+</style>
+
+<div id="particles-js"></div>
+
+<section class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-cards">
+        <div class="team-card">
+            <img src="{{ url_for('static', filename='team1.jpg') }}" alt="Team Member 1">
+            <h3>Rituraj Singh Rana</h3>
+            <p>Lead Developer</p>
+        </div>
+        <div class="team-card">
+            <img src="{{ url_for('static', filename='team2.jpg') }}" alt="Team Member 2">
+            <h3>Niharika Negi</h3>
+            <p>UI/UX Designer</p>
+        </div>
+        <div class="team-card">
+            <img src="{{ url_for('static', filename='team3.jpg') }}" alt="Team Member 3">
+            <h3>Harshit Tripathi</h3>
+            <p>ML Engineer</p>
+        </div>
+        <div class="team-card">
+            <img src="{{ url_for('static', filename='team4.jpg') }}" alt="Team Member 4">
+            <h3>Shreya Koranga</h3>
+            <p>Security Analyst</p>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+    particlesJS("particles-js", {
+        particles: {
+            number: {
+                value: 80,
+                density: { enable: true, value_area: 800 }
+            },
+            color: { value: "#00ffff" },
+            shape: {
+                type: "circle",
+                stroke: { width: 0, color: "#000000" },
+                polygon: { nb_sides: 5 }
+            },
+            opacity: {
+                value: 0.5,
+                random: false,
+                anim: { enable: false }
+            },
+            size: {
+                value: 3,
+                random: true,
+                anim: { enable: false }
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#00ffff",
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 3,
+                direction: "none",
+                random: false,
+                straight: false,
+                out_mode: "out",
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: { enable: true, mode: "grab" },
+                onclick: { enable: true, mode: "push" },
+                resize: true
+            },
+            modes: {
+                grab: { distance: 140, line_linked: { opacity: 1 } },
+                push: { particles_nb: 4 }
+            }
+        },
+        retina_detect: true
+    });
+</script>
+{% endblock %}
